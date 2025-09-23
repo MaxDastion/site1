@@ -1,0 +1,88 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+}
+
+.title {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 28px;
+}
+
+.hello {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+}
+
+header {
+    background-color: rgb(210, 210, 210);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 85px;
+    border-bottom: 1px solid rgb(105, 105, 105);
+    
+}
+
+.section-1 {
+    display: flex;
+    justify-content: center;
+}
+
+.main_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.main_form input {
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgb(105, 105, 105);
+    width: 250px;
+    font-size: 18px;
+}
+
+.auth_btn {
+    background-color: rgb(166, 248, 155);
+    margin-top: 15px;
+    transition: all 0.2s ease-in;
+}
+
+.auth_btn:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: rgb(138, 250, 123);
+}
+
+.reg_btn {
+    border: none;
+    background-color: rgb(248, 219, 155);
+    transition: all 0.2s ease-in;
+}
+
+.reg_btn:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: rgb(250, 207, 114);
+}
+
+
+.logout_btn {
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgb(105, 105, 105);
+    width: 250px;
+    font-size: 18px;
+    border: none;
+    background-color: rgb(249, 105, 105);
+    transition: all 0.2s ease-in;
+}
+
+.logout_btn:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: rgb(251, 76, 76);
+}
+
