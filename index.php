@@ -11,7 +11,7 @@
 */
 session_start();
 
-$serverName = "FANATSLARKA\SQLEXPRESS";
+$serverName = "DAIRY\SQLEXPRESS";
 $database = "temp";
 $user = "";
 $password = "";
