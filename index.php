@@ -6,7 +6,7 @@ $serverName = "FANATSLARKA\SQLEXPRESS";
 $database = "temp";
 $user = "";
 $password = "";
-$products = 
+
 
 $connectionInfo = [
     "Database" => $database,
@@ -14,6 +14,12 @@ $connectionInfo = [
     "PWD" => $password,
     "CharacterSet" => "UTF-8"
 ];
+
+$name = "";
+$category= "";
+$price= "";
+$descrition = "";
+
 
 $conn = sqlsrv_connect($serverName, $connectionInfo);
 
