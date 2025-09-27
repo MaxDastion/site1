@@ -1,5 +1,14 @@
-<?php
 
+
+<?php
+/* Сайт с отзывами на игры, фильмы и книги
+
+Что в нем должно быть:
+    1. связь с БД для того что бы сохранять отзывы
+    2. Собственно говоря место где можно написать отзыв
+    3. Место где можно просмотреть отзывы
+
+*/
 session_start();
 
 $serverName = "FANATSLARKA\SQLEXPRESS";
@@ -7,19 +16,12 @@ $database = "temp";
 $user = "";
 $password = "";
 
-
 $connectionInfo = [
     "Database" => $database,
     "UID" => $user,
     "PWD" => $password,
     "CharacterSet" => "UTF-8"
 ];
-
-$name = "";
-$category= "";
-$price= "";
-$descrition = "";
-
 
 $conn = sqlsrv_connect($serverName, $connectionInfo);
 
@@ -30,6 +32,16 @@ if ($conn === false) {
 $isLoggedIn = isset($_SESSION["isLoggedIn"]) ? $_SESSION["isLoggedIn"] : false;
 $username = isset($_SESSION["username"]) ? $_SESSION["username"] : "Гость";
 $message = '';
+
+$products = [];
+$productsSql = "SELECT name, category, price, description, image_url FROM products ORDER BY category, name";
+$productsStmt = sqlsrv_query($conn, $productsSql);
+
+if ($productsStmt !== false) {
+    while ($product = sqlsrv_fetch_array($productsStmt, SQLSRV_FETCH_ASSOC)) {
+        $products[] = $product;
+    }
+}
 
 if ($_POST) {
     if (isset($_POST['logout'])){
@@ -109,6 +121,23 @@ if ($_POST) {
             <form method="POST">
                 <input type="submit" name="logout" value="Выйти" class="logout_btn"></input>
             </form>
+            <div class="catalog">
+                <h2>Каталог товаров</h2>
+                <div class="products">
+                    <?php foreach ($products as $product): ?>
+                        <div class="product">
+                        <div class="product-image">
+                            <img src="<?php echo ($product['image_url']); ?>" >
+                            </div>
+                            <h3><?php echo ($product['name']); ?></h3>
+                            <p class="category">Категория: <?php echo ($product['category']);?></p>
+                            <p class="price">Цена: <?php echo ($product['price']);?></p>
+                            <p class="description"><?php echo ($product['description']);?></p>
+                        </div>
+                        <?php endforeach; ?>
+                </div>
+            </div>
+
         <?php else: ?>
             <form method="POST" class="main_form">
                 <input type="text" placeholder="Логин" name="login" required>
